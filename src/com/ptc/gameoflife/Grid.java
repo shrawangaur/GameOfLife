@@ -13,22 +13,26 @@ public class Grid {
 			Cell cellC = new Cell(GameLiterals.ZERO, GameLiterals.TWO);
 			Cell cellD = new Cell(GameLiterals.TWO, GameLiterals.ZERO);
 			Cell cellE = new Cell(GameLiterals.TWO, GameLiterals.TWO);
+            Cell cellF = new Cell(GameLiterals.TWO, GameLiterals.THREE);
 			cellList.add(cellA);
 			cellList.add(cellB);
 			cellList.add(cellC);
 			cellList.add(cellD);
 			cellList.add(cellE);
+            cellList.add(cellF);
 		} catch (Exception exception) {
 			System.out.println(exception.getMessage());
 		}
-		Grid grid = new Grid(cellList, GameLiterals.THREE, GameLiterals.THREE);
+		Grid grid = new Grid(cellList, GameLiterals.FOUR, GameLiterals.FOUR);
 		String printString = "";
 		try {
 			printString = grid.printGrid();
-
 			System.out.print(printString);
             System.out.println("Now After Tick");
-			System.out.println(grid.tick().printGrid());
+            Grid newGrid = grid.tick();
+			System.out.print(newGrid.printGrid());
+            System.out.println("Now After Tick");
+            System.out.println(newGrid.tick().printGrid());
 		} catch (NegativeCoordinateException e) {
 			e.printStackTrace();
 		}
